@@ -23,7 +23,7 @@
 			<param name="LevelMin" value="debug" />
 		</filter>
 	</appender>
-    <appender name="dev.important" class="org.apache.log4j.RollingFileAppender">
+    <appender name="important" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="log/system.important.log" />
         <param name="Encoding" value="UTF-8" />
         <param name="Append" value="true" />
@@ -41,18 +41,6 @@
 		<level value="ALL" />
 		<appender-ref ref="stdout" />
 		<appender-ref ref="everything" />
-		<appender-ref ref="important" />
-	</logger>
-	
-	<logger name="com.mchange">
-		<level value="error" />
-		<appender-ref ref="stdout" />
-		<appender-ref ref="important" />
-	</logger>
-
-	<logger name="org.quartz">
-		<level value="error" />
-		<appender-ref ref="stdout" />
 		<appender-ref ref="important" />
 	</logger>
 	

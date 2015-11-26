@@ -1,6 +1,6 @@
 package mc;
 
-import mc.entity.Trace;
+import mc.entity.Receipt;
 
 /**
  * 业务处理基类（处理并返回应该在子类中实现）
@@ -25,7 +25,8 @@ public abstract class Action {
 	 * 
 	 * @param packet
 	 *            {@link Packet}接受到的报文数据
-	 * @return {@link Trace}
+	 * @return {@link Receipt}
+	 * @throws Exception
 	 */
-	public abstract Trace handle(Packet packet);
+	public abstract Receipt handle(Packet packet) throws Exception;
 }

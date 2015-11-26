@@ -1,5 +1,7 @@
 package mc;
 
+import java.io.IOException;
+
 import mc.entity.Response;
 
 /**
@@ -10,5 +12,12 @@ import mc.entity.Response;
  */
 public interface Responder {
 
-	public void send(Response res);
+	/**
+	 * 输出应答报文
+	 * 
+	 * @param res
+	 *            {@link Response}
+	 * @throws IOException
+	 */
+	public void send(Response res) throws IOException;
 }

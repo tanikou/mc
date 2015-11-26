@@ -2,7 +2,6 @@ package mc.entity;
 
 import java.util.Date;
 
-import mc.Identity;
 import mc.Viewable;
 import mc.util.Data;
 
@@ -17,7 +16,6 @@ public class Trace implements Viewable {
 	public String client;
 	public int port;
 
-	public Identity identity = new Identity();
 	/** 请求报文 */
 	public byte[] req = new byte[] {};
 	/** 应答报文 */
@@ -36,8 +34,6 @@ public class Trace implements Viewable {
 		sb.append(client);
 		sb.append("\r\n端口号：");
 		sb.append(port);
-		sb.append("\r\n报文标识：");
-		sb.append(identity.identify());
 		sb.append("\r\n请求报文：");
 		sb.append(Data.hex(req));
 		sb.append("\r\n应答报文：");
