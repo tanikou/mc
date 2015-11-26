@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import mc.Processor;
+import mc.Handler;
 import mc.dao.DB;
 import mc.util.Data;
 
@@ -25,10 +25,10 @@ public class App implements Runnable {
 	/** 用于 多端口服务 中记录各端口号 */
 	private int iPort = 8008;
 	private int iMaxThread = 100;
-	private Processor iProcessor;
+	private Handler iHanlder;
 
-	public App(Processor processor) {
-		this.iProcessor = processor;
+	public App(Handler hanlder) {
+		this.iHanlder = hanlder;
 	}
 
 	public App setServerPort(int port) {
@@ -61,7 +61,7 @@ public class App implements Runnable {
 		logger.info(Data.toView(DB.getSystemTime()) + "启动服务，端口：" + iPort);
 
 		while (isSingleRunning) {
-			exer.submit(iProcessor.handle(server.accept()));
+			exer.submit(iHanlder.setup(server.accept()));
 		}
 
 		server.close();
