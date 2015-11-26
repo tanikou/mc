@@ -8,7 +8,7 @@ import mc.util.Data;
 /**
  * 请求报文对象基类
  * 
- * @author VicTan
+ * @author VicTan@qq.com
  *
  */
 public class Request implements Serializable, Viewable {
@@ -19,12 +19,7 @@ public class Request implements Serializable, Viewable {
 		this.source = origin.clone();
 	}
 
-	/**
-	 * 通信报文中的原始数据
-	 * 
-	 * @return
-	 */
-	public byte[] origin() {
+	public byte[] source() {
 		return this.source.clone();
 	}
 
