@@ -4,6 +4,12 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 数据转换工具
+ * 
+ * @author VicTan@qq.com
+ *
+ */
 public class Data {
 
 	public static String bcd(byte[] ary) {
