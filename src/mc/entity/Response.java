@@ -6,7 +6,7 @@ import mc.Viewable;
 import mc.util.Data;
 
 /**
- * 报文应答对象基类
+ * 报文应答对象基类（子类用于组装正常数据为报文）
  * 
  * @author VicTan@qq.com
  *
