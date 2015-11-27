@@ -27,6 +27,11 @@ public class App implements Runnable {
 	private int iMaxThread = 100;
 	private Runner iRunner;
 
+	/**
+	 * 
+	 * @param runner
+	 *            {@link Runner} 或者 {@link Handler}的子类
+	 */
 	public App(Runner runner) {
 		this.iRunner = runner;
 	}
