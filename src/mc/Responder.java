@@ -5,7 +5,7 @@ import java.io.IOException;
 import mc.entity.Response;
 
 /**
- * 报文应答接口（应该由{@link Handler}实现一同实现，并由{@link Action}处理完成时调用把应答报文返回出去）
+ * 报文应答接口
  * 
  * @author VicTan@qq.com
  *
@@ -20,4 +20,20 @@ public interface Responder {
 	 * @throws IOException
 	 */
 	public void send(Response res) throws IOException;
+
+	/**
+	 * 输出应答报文
+	 * 
+	 * @param res
+	 * @throws IOException
+	 */
+	public void send(byte[] res) throws IOException;
+
+	/**
+	 * 输出应答报文
+	 * 
+	 * @param res
+	 * @throws IOException
+	 */
+	public void send(byte res) throws IOException;
 }

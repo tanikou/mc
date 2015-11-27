@@ -18,14 +18,14 @@ public class Receipt implements Viewable {
 
 		return this;
 	}
-	
+
 	public Receipt append(String v, Throwable e) {
-		
+
 		return append(v).append(e.getMessage());
 	}
-	
+
 	public Receipt append(Receipt v) {
-		return append(v.toString());
+		return append(v.preview());
 	}
 
 	public String identify() {
