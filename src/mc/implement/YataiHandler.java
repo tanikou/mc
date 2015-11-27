@@ -43,7 +43,7 @@ public class YataiHandler extends Handler {
 		return this.trace;
 	}
 
-	public void doRun() throws Exception {
+	private void doRun() throws Exception {
 		// 读取报文
 		this.read();
 		// 解析 报文 中的 通讯数据包(第二层报文)
