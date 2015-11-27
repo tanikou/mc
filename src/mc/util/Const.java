@@ -20,6 +20,8 @@ public class Const {
 
 	public static int port = Integer.parseInt(prop("server.port"));
 	public static int max = Integer.parseInt(prop("thread.max"));
+	/** 超过此时间还仍未接受到油机任何请求则表示油机离线 */
+	public static int losttime = Integer.parseInt(prop("lost.time"));
 
 	/**
 	 * 取得配置文件中的常量信息
