@@ -4,31 +4,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/apache-log4j-extras-1.2.17.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/c3p0-0.9.1.2.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/common.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/commons-codec-1.9.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/commons-dbcp.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/commons-lang-2.1.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/commons-logging.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/commons-pool-1.3.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/communicate_wss.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/fluent-hc-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/httpclient-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/httpclient-cache-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/httpclient-win-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/httpcore-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/httpmime-4.4.1.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/jdom.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/jna-platform-4.1.0.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/manager_db.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/manager_po.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/mysql-connector-java-5.1.14.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/ognl.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="/mc_pc/lib/oraclejdbc14.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/spring-beans.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/spring-core.jar"/>
 	<classpathentry kind="lib" path="/mc_pc/lib/spring-jdbc.jar"/>
