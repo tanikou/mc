@@ -24,7 +24,8 @@ public class App implements Runnable {
 	private boolean isSingleRunning = true;
 	/** 用于 多端口服务 中记录各端口号 */
 	private int iPort = 8008;
-	private int iMaxThread = 100;
+	private int iMaxThread = 50;
+	/** 用于客户端报文请求的<strong>读取，解析，处理，应答</strong> */
 	private Runner iRunner;
 
 	/**
@@ -36,9 +37,13 @@ public class App implements Runnable {
 		this.iRunner = runner;
 	}
 
-	public App setServerPort(int port) {
+	public App(Runner runner, int port) {
+		this.iRunner = runner;
 		this.iPort = port;
-		return this;
+	}
+
+	public int getServerPort(int port) {
+		return this.iPort;
 	}
 
 	public App setMaxThread(int max) {
