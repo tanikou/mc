@@ -1,9 +1,7 @@
-package mc.entity;
+package mc;
 
 import java.io.Serializable;
 
-import mc.Packet;
-import mc.Viewable;
 import mc.util.Data;
 
 /**
@@ -12,16 +10,12 @@ import mc.util.Data;
  * @author VicTan@qq.com
  *
  */
-public class Request implements Serializable, Viewable {
+public abstract class Request implements Serializable, Viewable {
 	protected static final long serialVersionUID = 1L;
 	protected byte[] source = new byte[] {};
 
 	public Request(Packet packet) {
-		this.source = packet.source().clone();
-	}
-
-	public byte[] source() {
-		return this.source.clone();
+		this.source = packet.data();
 	}
 
 	@Override

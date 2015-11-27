@@ -1,8 +1,7 @@
-package mc.entity;
+package mc;
 
 import java.io.Serializable;
 
-import mc.Viewable;
 import mc.util.Data;
 
 /**
@@ -11,7 +10,7 @@ import mc.util.Data;
  * @author VicTan@qq.com
  *
  */
-public class Response implements Serializable, Viewable {
+public abstract class Response implements Serializable, Viewable {
 	private static final long serialVersionUID = 1L;
 	protected byte[] source;
 
@@ -19,12 +18,10 @@ public class Response implements Serializable, Viewable {
 		this.source = origin.clone();
 	}
 
-	public byte[] source() {
-		return this.source.clone();
-	}
-
 	@Override
 	public String preview() {
 		return Data.hex(source);
 	}
+
+	public abstract Packet packet();
 }

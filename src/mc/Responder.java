@@ -2,8 +2,6 @@ package mc;
 
 import java.io.IOException;
 
-import mc.entity.Response;
-
 /**
  * 报文应答接口
  * 
@@ -20,6 +18,14 @@ public interface Responder {
 	 * @throws IOException
 	 */
 	public void send(Response res) throws IOException;
+
+	/**
+	 * 输出应答报文
+	 * 
+	 * @param packet
+	 * @throws IOException
+	 */
+	public void send(Packet packet) throws IOException;
 
 	/**
 	 * 输出应答报文

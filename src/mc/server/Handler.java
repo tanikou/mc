@@ -7,9 +7,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import mc.Packet;
 import mc.Responder;
+import mc.Response;
 import mc.Runner;
-import mc.entity.Response;
 import mc.entity.Trace;
 
 /**
@@ -53,6 +54,11 @@ public abstract class Handler implements Runner, Responder {
 
 	@Override
 	public void send(Response res) throws IOException {
+		send(res.packet());
+	}
+
+	@Override
+	public void send(Packet res) throws IOException {
 		send(res.source());
 	}
 

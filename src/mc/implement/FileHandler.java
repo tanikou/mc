@@ -11,8 +11,8 @@ import mc.util.Data;
 
 import org.apache.log4j.Logger;
 
-public class YataiHandler extends Handler {
-	private Logger logger = Logger.getLogger(YataiHandler.class);
+public class FileHandler extends Handler {
+	private Logger logger = Logger.getLogger(FileHandler.class);
 
 	private Receipt receipt = new Receipt();
 
@@ -21,7 +21,7 @@ public class YataiHandler extends Handler {
 		try {
 			this.doRun();
 		} catch (Throwable e) {
-			// e.printStackTrace();
+			e.printStackTrace();
 			receipt.append("处理报文出错，报文内容--" + Data.hex(trace.req));
 			receipt.append("处理报文出错，错误信息：", e);
 		} finally {
@@ -47,8 +47,8 @@ public class YataiHandler extends Handler {
 		// 读取报文
 		this.read();
 		// 解析 报文 中的 通讯数据包(第二层报文)
-		Packet packet = new YataiPacket().source(trace.req);
+		Packet packet = new FilePacket().source(trace.req);
 
-		this.receipt.append(new YataiAction(this).handle(packet));
+		this.receipt.append(new FileAction(this).dispatch(packet));
 	}
 }

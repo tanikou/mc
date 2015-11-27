@@ -28,5 +28,5 @@ public abstract class Action {
 	 * @return {@link Receipt}
 	 * @throws Exception
 	 */
-	public abstract Receipt handle(Packet packet) throws Exception;
+	public abstract Receipt dispatch(Packet packet) throws Exception;
 }
