@@ -1,4 +1,4 @@
-package mc.server;
+package mc;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -7,10 +7,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import mc.Packet;
-import mc.Responder;
-import mc.Response;
-import mc.Runner;
 import mc.entity.Trace;
 
 /**

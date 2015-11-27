@@ -2,11 +2,11 @@ package mc.implement;
 
 import java.io.IOException;
 
+import mc.Handler;
 import mc.Packet;
 import mc.dao.DB;
 import mc.entity.Receipt;
 import mc.entity.Trace;
-import mc.server.Handler;
 import mc.util.Data;
 
 import org.apache.log4j.Logger;
