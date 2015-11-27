@@ -13,7 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * 主服务
+ * 卡机联动管控程序主服务（各协议的实现可以使用<strong>多线程监听不同的端口</strong>）
  * 
  * @author VicTan@qq.com
  */
