@@ -23,7 +23,7 @@ import mc.entity.Trace;
  * @author VicTan@qq.com
  *
  */
-public abstract class Handler implements Runner, Responder {
+public abstract class Handler extends Runner implements Responder {
 
 	protected Socket socket;
 	protected Trace trace = new Trace();

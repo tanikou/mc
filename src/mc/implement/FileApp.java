@@ -11,6 +11,6 @@ import mc.server.App;
 public class FileApp {
 
 	public static void main(String[] args) {
-		new Thread(new App(new FileHandler(), 1202)).start();
+		new Thread(new App(FileHandler.class, 1202)).start();
 	}
 }

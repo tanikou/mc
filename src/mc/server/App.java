@@ -27,18 +27,18 @@ public class App implements Runnable {
 	private int iPort = 8008;
 	private int iMaxThread = 50;
 	/** 用于客户端报文请求的<strong>读取，解析，处理，应答</strong> */
-	private Runner iRunner;
+	private Class<? extends Runner> iRunner;
 
 	/**
 	 * 
 	 * @param runner
 	 *            {@link Runner} 或者 {@link Handler}的子类
 	 */
-	public App(Runner runner) {
+	public App(Class<? extends Runner> runner) {
 		this.iRunner = runner;
 	}
 
-	public App(Runner runner, int port) {
+	public App(Class<? extends Runner> runner, int port) {
 		this.iRunner = runner;
 		this.iPort = port;
 	}
@@ -72,7 +72,11 @@ public class App implements Runnable {
 		logger.info(Data.toView(DB.getSystemTime()) + "启动服务，端口：" + iPort);
 
 		while (isSingleRunning) {
-			exer.submit(iRunner.setup(server.accept()));
+			try {
+				exer.submit(iRunner.newInstance().setup(server.accept()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		server.close();
