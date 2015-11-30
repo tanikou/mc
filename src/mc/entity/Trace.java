@@ -30,9 +30,9 @@ public class Trace implements Viewable {
 		StringBuilder sb = new StringBuilder();
 		sb.append("请求时间：");
 		sb.append(Data.toView(time));
-		sb.append("\r\n请求IP：");
+		sb.append("\r\n客户端IP：");
 		sb.append(client);
-		sb.append("\r\n端口号：");
+		sb.append("\r\n请求端口：");
 		sb.append(port);
 		sb.append("\r\n请求报文：");
 		sb.append(Data.hex(req));

@@ -30,6 +30,7 @@ public class FileHandler extends Handler {
 			} catch (IOException e) {
 			}
 		}
+		receipt.append(trace.preview());
 
 		logger.debug("处理报文结束，处理过程信息：" + receipt.preview());
 	}

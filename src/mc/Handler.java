@@ -34,6 +34,7 @@ public abstract class Handler extends Runner implements Responder {
 	public Runner setup(Socket socket) {
 		try {
 			this.socket = socket;
+			this.trace.port = socket.getLocalPort();
 			this.trace.client = socket.getInetAddress().getHostAddress();
 			this.in = new DataInputStream(new BufferedInputStream(
 					this.socket.getInputStream()));
