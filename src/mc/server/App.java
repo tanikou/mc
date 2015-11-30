@@ -30,14 +30,22 @@ public class App implements Runnable {
 	private Class<? extends Runner> iRunner;
 
 	/**
+	 * 使用默认端口8008开启服务
 	 * 
 	 * @param runner
-	 *            {@link Runner} 或者 {@link Handler}的子类
+	 *            用来读取，转换，处理报文的类。{@link Runner} 或者 {@link Handler}的子类
 	 */
 	public App(Class<? extends Runner> runner) {
 		this.iRunner = runner;
 	}
 
+	/**
+	 * 
+	 * @param runner
+	 *            用来读取，转换，处理报文的类。{@link Runner} 或者 {@link Handler}的子类
+	 * @param port
+	 *            监听端口
+	 */
 	public App(Class<? extends Runner> runner, int port) {
 		this.iRunner = runner;
 		this.iPort = port;
