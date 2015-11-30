@@ -322,6 +322,8 @@ public class Viewer {
 		iScroll.setAutoscrolls(false);
 		frame.add(iScroll);
 
+		describe();
+
 		frame.setVisible(true);
 	}
 
@@ -331,6 +333,7 @@ public class Viewer {
 
 	public void describe() {
 		iTxtArea.setText("");
+		iTxtArea.append("把日志写入数据库会不会是个好的办法呢？\r\n\r\n");
 		iTxtArea.append("可解析下载文件和查看日志文件\r\n");
 		iTxtArea.append("支持拖拽日志文件到显示框\r\n");
 		iTxtArea.append("进度框可直接输入百分比到一定位置开始预览\r\n");
@@ -339,6 +342,7 @@ public class Viewer {
 		iTxtArea.append("在关键词栏里面  ESC  可取消当前正在进行的全文搜索\r\n");
 		iTxtArea.append("搜索是在当前页内循环检索\r\n");
 		iTxtArea.append("重发报文是向本机发送完整报文，FA开头-CRC结束\r\n");
+		iTxtArea.append("Ctrl+Q可设置服务器IP与端口\r\n");
 		iTxtArea.append("ALT+F可设置提取报文的前置关键符\r\n");
 		iTxtArea.append("Ctrl+F可提取当前页内能匹配前置关键符的报文\r\n");
 		iTxtArea.append("Ctrl+Shift+F可提取整个日志中的能匹配前置关键符的报文\r\n");
