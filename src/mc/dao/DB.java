@@ -6,9 +6,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
-
 import mc.util.Const;
+
+import org.apache.log4j.Logger;
 
 /**
  * 数据操作
@@ -23,6 +23,7 @@ public class DB {
 	private static DB db;
 	/** 此次班别中所有连接过的终端机编号 如果不使用{@link ConcurrentHashMap}在定时多线程定时任务中会出错 */
 	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
+
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
 	static {
 		db = new DB();
