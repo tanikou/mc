@@ -11,7 +11,7 @@ import mc.entity.Trace;
 
 /**
  * 报文处理基类（子类应该run方法中实现对报文的读取，处理，应答）。<br>
- * 基类实现了{@link Runner} 和 {@link Responder}。<br>
+ * 基类继承于{@link Runner} 并实现了 {@link Responder}。<br>
  * 基类对象有<strong>以下属性 供子类使用</strong>
  * <ul>
  * <li>socket 客户端请求{@link Socket}对象</li>
