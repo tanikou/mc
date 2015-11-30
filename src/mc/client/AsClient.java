@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.Arrays;
-
-import mc.Packet;
-import mc.util.Data;
+import java.util.concurrent.Callable;
 
 /**
  * 客户端模拟器
@@ -18,8 +16,8 @@ import mc.util.Data;
  * @author VicTan@qq.com
  *
  */
-public class AsClient implements Runnable {
-	private Packet packet;
+public class AsClient implements Callable<byte[]> {
+	private byte[] packet;
 	private Socket socket;
 	private DataInputStream inn;
 	private DataOutputStream out;
@@ -63,21 +61,20 @@ public class AsClient implements Runnable {
 	}
 
 	/**
-	 * 发送已经包装好的 {@link Packet} 对象给服务器
+	 * 发送已经包装好的bytes给服务器
 	 * 
-	 * @param packet
-	 *            {@link Packet}
+	 * @param bytes
 	 * @return
 	 */
-	public AsClient send(Packet packet) {
-		this.packet = packet;
+	public AsClient send(byte[] bytes) {
+		this.packet = bytes;
 		return this;
 	}
 
 	@Override
-	public void run() {
+	public byte[] call() throws Exception {
 		try {
-			this.doRun();
+			return this.doRun();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -87,18 +84,20 @@ public class AsClient implements Runnable {
 				e.printStackTrace();
 			}
 		}
+
+		return null;
 	}
 
-	private void doRun() throws IOException {
+	private byte[] doRun() throws IOException {
 
 		// 发送数据
-		out.write(packet.source());
+		out.write(packet);
 		out.flush();
 		// 接受返回数据
 		byte[] res = new byte[1024];
 		int len = inn.read(res);
 
-		System.out.println(Data.hex(Arrays.copyOfRange(res, 0, len)));
+		return Arrays.copyOfRange(res, 0, len);
 	}
 
 	/**
