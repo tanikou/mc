@@ -1,7 +1,7 @@
 package mc.test;
 
-import mc.implement.FilePacket;
-import mc.implement.FileRequest;
+import mc.impl.file.FilePacket;
+import mc.impl.file.FileRequest;
 
 public class Tester {
 	public static void main(String[] args) throws Exception {
