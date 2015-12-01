@@ -2,10 +2,13 @@ package mc.dao;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
+import mc.entity.Notice;
 import mc.util.Const;
 
 import org.apache.log4j.Logger;
@@ -23,6 +26,8 @@ public class DB {
 	private static DB db;
 	/** 此次班别中所有连接过的终端机编号 如果不使用{@link ConcurrentHashMap}在定时多线程定时任务中会出错 */
 	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
+	/** 下发命令队列 */
+	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
 	static {
@@ -47,5 +52,37 @@ public class DB {
 	 */
 	public static Date getSystemTime() {
 		return new Date();
+	}
+
+	/**
+	 * 取对指定终端机的下发命令
+	 * 
+	 * @param physical
+	 *            终端号
+	 * @param o
+	 *            命令字。
+	 */
+	public static void broadcast(String physical, Notice o) {
+		Queue<Notice> queue = db.notice.get(physical);
+		if (null == queue) {
+			queue = new ConcurrentLinkedQueue<Notice>();
+			db.notice.put(physical, queue);
+		}
+		queue.add(o);
+	}
+
+	/**
+	 * 判断终端是否有下发命令
+	 * 
+	 * @param physical
+	 *            终端号
+	 * @return
+	 */
+	public static boolean noticed(String physical) {
+		Queue<Notice> queue = db.notice.get(physical);
+		if (null == queue) {
+			return false;
+		}
+		return queue.size() > 0;
 	}
 }
