@@ -64,10 +64,22 @@ public class Notice {
 	/**
 	 * 判断下发命令是否和另另一个下发命令相同
 	 * 
-	 * @param e
+	 * @param notice
+	 *            {@link Notice}
 	 * @return
 	 */
 	public boolean equal(Notice notice) {
 		return Data.equal(this.source(), notice.source());
+	}
+
+	/**
+	 * 判断下发命令是否和另另一个下发命令相同<br>
+	 * 只判断第一个byte（单一命令字）是否相等
+	 * 
+	 * @param b
+	 * @return
+	 */
+	public boolean equal(byte b) {
+		return b == source[0];
 	}
 }
