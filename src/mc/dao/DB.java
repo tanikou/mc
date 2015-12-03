@@ -114,7 +114,7 @@ public class DB {
 	 *            终端编号
 	 * @return 下发命令，如果没有下发命令则为<strong>null</strong>
 	 */
-	public static Notice notice(String physical) {
+	public static Notice notification(String physical) {
 		Queue<Notice> queue = db.notice.get(physical);
 		return null == queue ? null : queue.peek();
 	}
