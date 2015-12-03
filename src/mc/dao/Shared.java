@@ -14,16 +14,16 @@ import mc.util.Const;
 import org.apache.log4j.Logger;
 
 /**
- * 数据操作
+ * 共享数据操作
  * 
  * @author VicTan@qq.com
  *
  */
-public class DB {
-	private static Logger logger = Logger.getLogger(DB.class);
+public class Shared {
+	private static Logger logger = Logger.getLogger(Shared.class);
 
 	/** 整个环境只允许有一个DB，所有的缓存数据访问可db来处理 */
-	private static DB db;
+	private static Shared db;
 	/** 此次班别中所有连接过的终端机编号 如果不使用{@link ConcurrentHashMap}在定时多线程定时任务中会出错 */
 	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
 	/** 下发命令队列 */
@@ -31,7 +31,7 @@ public class DB {
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
 	static {
-		db = new DB();
+		db = new Shared();
 
 		// 定时任务，开始
 		TimerTask task = new TimerTask() {
@@ -43,6 +43,12 @@ public class DB {
 		};
 		new Timer().schedule(task, Const.losttime, Const.losttime);
 		// 定时任务，结束
+	}
+
+	/**
+	 * 不允许外部实例化
+	 */
+	private Shared() {
 	}
 
 	/**

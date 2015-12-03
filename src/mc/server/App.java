@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 
 import mc.Handler;
 import mc.Runner;
-import mc.dao.DB;
+import mc.dao.Shared;
 import mc.util.Data;
 
 import org.apache.commons.logging.Log;
@@ -77,7 +77,7 @@ public class App implements Runnable {
 	private void doRun() throws IOException {
 		ExecutorService exer = Executors.newFixedThreadPool(iMaxThread);
 		ServerSocket server = new ServerSocket(iPort);
-		logger.info(Data.toView(DB.getSystemTime()) + "启动服务，端口：" + iPort);
+		logger.info(Data.toView(Shared.getSystemTime()) + "启动服务，端口：" + iPort);
 
 		while (isSingleRunning) {
 			try {
@@ -89,6 +89,6 @@ public class App implements Runnable {
 
 		server.close();
 		exer.shutdown();
-		logger.info(Data.toView(DB.getSystemTime()) + "停止服务，端口：" + iPort);
+		logger.info(Data.toView(Shared.getSystemTime()) + "停止服务，端口：" + iPort);
 	}
 }

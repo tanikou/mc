@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import mc.Handler;
 import mc.Packet;
-import mc.dao.DB;
+import mc.dao.Shared;
 import mc.entity.Receipt;
 import mc.entity.Trace;
 import mc.util.Data;
@@ -38,7 +38,7 @@ public class FileHandler extends Handler {
 	private Trace read() throws Exception {
 		receipt.append("开始读取报文内容");
 
-		this.trace.time = DB.getSystemTime();
+		this.trace.time = Shared.getSystemTime();
 		this.trace.req = new byte[] { this.in.readByte() };
 
 		return this.trace;
