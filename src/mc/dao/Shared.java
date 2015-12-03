@@ -100,21 +100,6 @@ public class Shared {
 	}
 
 	/**
-	 * 判断终端是否有下发命令
-	 * 
-	 * @param physical
-	 *            终端编号
-	 * @return
-	 */
-	public static boolean isNoticed(String physical) {
-		Queue<Notice> queue = db.notice.get(physical);
-		if (null == queue) {
-			return false;
-		}
-		return queue.size() > 0;
-	}
-
-	/**
 	 * 取得队列中最前面的下发命令
 	 * 
 	 * @param physical
@@ -123,6 +108,14 @@ public class Shared {
 	 */
 	public static Notice notification(String physical) {
 		Queue<Notice> queue = db.notice.get(physical);
-		return null == queue ? null : queue.peek();
+		if (null == queue) {
+			return null;
+		}
+		Notice notice = queue.peek();
+		if (notice.isRead()) {
+			queue.poll();// 删除已经下发完成的命令
+			return queue.peek();// 重新取下一条下发命令
+		}
+		return notice;
 	}
 }

@@ -135,17 +135,6 @@ public class App implements Runnable {
 	}
 
 	/**
-	 * 判断终端是否有下发命令
-	 * 
-	 * @param physical
-	 *            终端编号
-	 * @return
-	 */
-	public static boolean isNoticed(String physical) {
-		return Shared.isNoticed(physical);
-	}
-
-	/**
 	 * 取得队列中最前面的下发命令
 	 * 
 	 * @param physical
