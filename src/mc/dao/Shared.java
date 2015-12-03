@@ -68,13 +68,14 @@ public class Shared {
 	 * @param o
 	 *            命令字。
 	 */
-	public static void broadcast(String physical, Notice o) {
+	public static boolean broadcast(String physical, Notice o) {
 		Queue<Notice> queue = db.notice.get(physical);
 		if (null == queue) {
 			queue = new ConcurrentLinkedQueue<Notice>();
 			db.notice.put(physical, queue);
 		}
 		queue.add(o);
+		return true;
 	}
 
 	/**

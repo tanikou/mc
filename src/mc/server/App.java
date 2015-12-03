@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import mc.Handler;
 import mc.Runner;
 import mc.dao.Shared;
+import mc.entity.Notice;
 import mc.util.Data;
 
 import org.apache.commons.logging.Log;
@@ -51,15 +52,30 @@ public class App implements Runnable {
 		this.iPort = port;
 	}
 
+	/**
+	 * 取得端口号
+	 * 
+	 * @param port
+	 * @return
+	 */
 	public int getServerPort(int port) {
 		return this.iPort;
 	}
 
+	/**
+	 * 设置本服务线程池中的最大处理线程数
+	 * 
+	 * @param max
+	 * @return
+	 */
 	public App setMaxThread(int max) {
 		this.iMaxThread = max;
 		return this;
 	}
 
+	/**
+	 * 停止当前服务
+	 */
 	public void stop() {
 		this.isSingleRunning = false;
 	}
@@ -90,5 +106,53 @@ public class App implements Runnable {
 		server.close();
 		exer.shutdown();
 		logger.info(Data.toView(Shared.getSystemTime()) + "停止服务，端口：" + iPort);
+	}
+
+	/************************************* 以下代码全部调用Shared对象 *************************************/
+	/**
+	 * 取对指定终端机的下发命令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @param o
+	 *            命令字。
+	 */
+	public static boolean broadcast(String physical, Notice o) {
+		return Shared.broadcast(physical, o);
+	}
+
+	/**
+	 * 取消下发指令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @param o
+	 *            需要取消的下发命令
+	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
+	 */
+	public static boolean unbroadcast(String physical, Notice o) {
+		return Shared.unbroadcast(physical, o);
+	}
+
+	/**
+	 * 判断终端是否有下发命令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @return
+	 */
+	public static boolean isNoticed(String physical) {
+		return Shared.isNoticed(physical);
+	}
+
+	/**
+	 * 取得队列中最前面的下发命令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @return 下发命令，如果没有下发命令则为<strong>null</strong>
+	 */
+	public static Notice notification(String physical) {
+		return Shared.notification(physical);
 	}
 }
