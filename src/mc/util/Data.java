@@ -252,4 +252,24 @@ public class Data {
 	public static String toView(Date time, String format) {
 		return new SimpleDateFormat(format).format(time);
 	}
+
+	/**
+	 * 判断两个byte数组内容是否完全一致
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static boolean equal(byte[] a, byte[] b) {
+		if (a.length != b.length) {
+			return false;
+		}
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != b[i]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

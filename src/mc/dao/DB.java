@@ -58,7 +58,7 @@ public class DB {
 	 * 取对指定终端机的下发命令
 	 * 
 	 * @param physical
-	 *            终端号
+	 *            终端编号
 	 * @param o
 	 *            命令字。
 	 */
@@ -72,17 +72,50 @@ public class DB {
 	}
 
 	/**
+	 * 取消下发指令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @param o
+	 *            需要取消的下发命令
+	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
+	 */
+	public static boolean unbroadcast(String physical, Notice o) {
+		Queue<Notice> queue = db.notice.get(physical);
+		Notice notice = queue.peek();
+		if (null == notice) {
+			return false;
+		} else if (notice.equal(o)) {
+			queue.poll();
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * 判断终端是否有下发命令
 	 * 
 	 * @param physical
-	 *            终端号
+	 *            终端编号
 	 * @return
 	 */
-	public static boolean noticed(String physical) {
+	public static boolean isNoticed(String physical) {
 		Queue<Notice> queue = db.notice.get(physical);
 		if (null == queue) {
 			return false;
 		}
 		return queue.size() > 0;
+	}
+
+	/**
+	 * 取得队列中最前面的下发命令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @return 下发命令，如果没有下发命令则为<strong>null</strong>
+	 */
+	public static Notice notice(String physical) {
+		Queue<Notice> queue = db.notice.get(physical);
+		return null == queue ? null : queue.peek();
 	}
 }

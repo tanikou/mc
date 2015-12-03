@@ -2,6 +2,8 @@ package mc.entity;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import mc.util.Data;
+
 /**
  * 下发命令通知，默认读取三次则示客户端已经取得当前通知<br>
  * （当确认已经客户端收到通知后应该从命令队列进移除此通知）
@@ -38,7 +40,7 @@ public class Notice {
 	 */
 	public byte[] read() {
 		times.incrementAndGet();
-		return source;
+		return source.clone();
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class Notice {
 	 * @return
 	 */
 	public byte[] source() {
-		return source;
+		return source.clone();
 	}
 
 	/**
@@ -57,5 +59,15 @@ public class Notice {
 	 */
 	public boolean isRead() {
 		return times.get() >= 3;
+	}
+
+	/**
+	 * 判断下发命令是否和另另一个下发命令相同
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public boolean equal(Notice notice) {
+		return Data.equal(this.source(), notice.source());
 	}
 }
