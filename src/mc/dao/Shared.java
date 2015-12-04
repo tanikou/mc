@@ -192,4 +192,16 @@ public class Shared {
 	public static boolean register(String client) {
 		return db.clients.add(client);
 	}
+
+	/**
+	 * 设定某终端的时实状态
+	 * 
+	 * @param client
+	 *            终端编号
+	 * @param instant
+	 *            状态
+	 */
+	public static void instant(String client, Instant instant) {
+		db.instant.put(client, instant);
+	}
 }
