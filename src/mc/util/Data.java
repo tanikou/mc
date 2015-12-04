@@ -12,17 +12,43 @@ import java.util.Date;
  */
 public class Data {
 
+	/**
+	 * byte数组转BCD字符串
+	 * 
+	 * @param ary
+	 * @return
+	 */
 	public static String bcd(byte[] ary) {
-		return bcd2string(ary);
+		return bcd2str(ary);
 	}
 
-	public static String bcd2string(byte[] bytes) {
+	/**
+	 * byte数组转BCD字符串
+	 * 
+	 * @param bytes
+	 * @return
+	 */
+	public static String bcd2str(byte[] bytes) {
 		StringBuffer temp = new StringBuffer(bytes.length * 2);
 		for (int i = 0; i < bytes.length; i++) {
 			temp.append((byte) ((bytes[i] & 0xf0) >>> 4));
 			temp.append((byte) (bytes[i] & 0x0f));
 		}
 		return temp.charAt(0) == 0 ? temp.substring(1) : temp.toString();
+	}
+
+	/**
+	 * byte数组转int
+	 * 
+	 * @param ary
+	 * @return
+	 */
+	public static int bcd2int(byte[] ary) {
+		int v = 0;
+		for (int i = 0; i < ary.length; i++) {
+			v = (v * 100) + (((ary[i] & 0xFF) >> 4) * 10) + (ary[i] & 0x0F);
+		}
+		return v;
 	}
 
 	/**

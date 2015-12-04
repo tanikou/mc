@@ -7,5 +7,5 @@ package mc.annotation;
  *
  */
 public enum Type {
-	Int, String, HexString, BcdString, Byte, Bytes;
+	Int, String, HexString, BcdString, BcdInt, Byte, Bytes;
 }

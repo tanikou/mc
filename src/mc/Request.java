@@ -56,7 +56,10 @@ public abstract class Request implements Serializable, Viewable {
 					field.set(this, Data.hex(ary));
 
 				} else if (Type.BcdString == bind.type()) {
-					field.set(this, Data.bcd2string(ary));
+					field.set(this, Data.bcd2str(ary));
+
+				} else if (Type.BcdInt == bind.type()) {
+					field.set(this, Data.bcd2int(ary));
 				}
 			} catch (Exception e) {
 				logger.trace(field.getName() + " 自动解析报文失败", e);
