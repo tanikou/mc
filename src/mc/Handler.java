@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import mc.entity.Trace;
+import mc.util.Adder;
 
 /**
  * 报文处理基类（子类应该run方法中实现对报文的读取，处理，应答）。<br>
@@ -57,6 +58,11 @@ public abstract class Handler extends Runner implements Responder {
 	@Override
 	public void send(Packet res) throws IOException {
 		send(res.source());
+	}
+
+	@Override
+	public void send(Adder adder) throws IOException {
+		send(adder.source());
 	}
 
 	@Override

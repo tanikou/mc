@@ -2,6 +2,8 @@ package mc;
 
 import java.io.IOException;
 
+import mc.util.Adder;
+
 /**
  * 报文应答接口
  * 
@@ -26,6 +28,14 @@ public interface Responder {
 	 * @throws IOException
 	 */
 	public void send(Packet packet) throws IOException;
+
+	/**
+	 * 输出应答报文
+	 * 
+	 * @param adder
+	 * @throws IOException
+	 */
+	public void send(Adder adder) throws IOException;
 
 	/**
 	 * 输出应答报文
