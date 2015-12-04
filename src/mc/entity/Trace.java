@@ -12,17 +12,15 @@ import mc.util.Data;
  *
  */
 public class Trace implements Viewable {
-
+	/** 客户端IP */
 	public String client;
+	/** 通讯端口 */
 	public int port;
-
 	/** 请求报文 */
 	public byte[] req = new byte[] {};
 	/** 应答报文 */
 	public byte[] res = new byte[] {};
-	/**
-	 * 客户端链接发启时间
-	 */
+	/** 客户端链接发启时间 */
 	public Date time = new Date();
 
 	@Override
