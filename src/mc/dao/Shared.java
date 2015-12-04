@@ -3,10 +3,12 @@ package mc.dao;
 import java.util.Date;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 import mc.entity.Notice;
 import mc.util.Const;
@@ -28,6 +30,8 @@ public class Shared {
 	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
 	/** 下发命令队列 */
 	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
+
+	private Set<String> clients = new ConcurrentSkipListSet<String>();
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
 	static {
@@ -63,16 +67,16 @@ public class Shared {
 	/**
 	 * 取对指定终端机的下发命令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            命令字。
 	 */
-	public static boolean broadcast(String physical, Notice o) {
-		Queue<Notice> queue = db.notice.get(physical);
+	public static boolean broadcast(String client, Notice o) {
+		Queue<Notice> queue = db.notice.get(client);
 		if (null == queue) {
 			queue = new ConcurrentLinkedQueue<Notice>();
-			db.notice.put(physical, queue);
+			db.notice.put(client, queue);
 		}
 		queue.add(o);
 		return true;
@@ -81,14 +85,14 @@ public class Shared {
 	/**
 	 * 取消下发指令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            需要取消的下发命令
 	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
 	 */
-	public static boolean unbroadcast(String physical, Notice o) {
-		Queue<Notice> queue = db.notice.get(physical);
+	public static boolean unbroadcast(String client, Notice o) {
+		Queue<Notice> queue = db.notice.get(client);
 		Notice notice = queue.peek();
 		if (null == notice) {
 			return false;
@@ -102,14 +106,14 @@ public class Shared {
 	/**
 	 * 取消下发指令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            需要取消的下发命令
 	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
 	 */
-	public static boolean unbroadcast(String physical, byte o) {
-		Queue<Notice> queue = db.notice.get(physical);
+	public static boolean unbroadcast(String client, byte o) {
+		Queue<Notice> queue = db.notice.get(client);
 		Notice notice = queue.peek();
 		if (null == notice) {
 			return false;
@@ -123,12 +127,12 @@ public class Shared {
 	/**
 	 * 取得队列中最前面的下发命令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @return 下发命令，如果没有下发命令则为<strong>null</strong>
 	 */
-	public static Notice notification(String physical) {
-		Queue<Notice> queue = db.notice.get(physical);
+	public static Notice notification(String client) {
+		Queue<Notice> queue = db.notice.get(client);
 		if (null == queue) {
 			return null;
 		}
@@ -138,5 +142,16 @@ public class Shared {
 			return queue.peek();// 重新取下一条下发命令
 		}
 		return notice;
+	}
+
+	/**
+	 * 注册客户端
+	 * 
+	 * @param client
+	 *            客户端编号（商户号+终端号）
+	 * @return
+	 */
+	public static boolean register(String client) {
+		return db.clients.add(client);
 	}
 }
