@@ -1,6 +1,5 @@
 package mc;
 
-import mc.entity.Receipt;
 
 /**
  * 业务处理基类（处理并返回应该在子类中实现）
@@ -19,14 +18,4 @@ public abstract class Action {
 	public Action(Responder responder) {
 		this.responder = responder;
 	}
-
-	/**
-	 * 根据报文处理具体业务
-	 * 
-	 * @param packet
-	 *            {@link Packet}接受到的报文数据
-	 * @return {@link Receipt}
-	 * @throws Exception
-	 */
-	public abstract Receipt dispatch(Packet packet) throws Exception;
 }

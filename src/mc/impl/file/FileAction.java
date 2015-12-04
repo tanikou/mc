@@ -13,7 +13,14 @@ public class FileAction extends Action {
 		super(responder);
 	}
 
-	@Override
+	/**
+	 * 分发业务
+	 * 
+	 * @param packet
+	 *            {@link Packet}
+	 * @return
+	 * @throws Exception
+	 */
 	public Receipt dispatch(Packet packet) throws Exception {
 		receipt.append("FileAction 开始处理报文");
 		Adder adder = new Adder().add(new byte[] { 0x09, 0x08 });
