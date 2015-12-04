@@ -204,4 +204,14 @@ public class Shared {
 	public static void instant(String client, Instant instant) {
 		db.instant.put(client, instant);
 	}
+
+	/**
+	 * 刷新终端的最新链接时间
+	 * 
+	 * @param client
+	 *            终端编号
+	 */
+	public static void heartbeat(String client) {
+		db.actived.put(client, getSystemTime());
+	}
 }
