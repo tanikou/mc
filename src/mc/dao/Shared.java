@@ -45,7 +45,11 @@ public class Shared {
 				}
 			}
 		};
-		new Timer().schedule(task, Const.losttime, Const.losttime);
+		String losttime = Const.prop("lost.time");
+		if (null != losttime) {
+			int time = Integer.parseInt(losttime);
+			new Timer().schedule(task, time, time);
+		}
 		// 定时任务，结束
 	}
 
