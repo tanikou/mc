@@ -30,7 +30,7 @@ public class Shared {
 	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
 	/** 下发命令队列 */
 	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
-
+	/** 所有的终端列表 */
 	private Set<String> clients = new ConcurrentSkipListSet<String>();
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
