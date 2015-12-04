@@ -1,6 +1,7 @@
 package mc.dao;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -10,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+import mc.entity.Instant;
 import mc.entity.Notice;
 import mc.util.Const;
 
@@ -32,6 +34,8 @@ public class Shared {
 	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
 	/** 所有的终端列表 */
 	private Set<String> clients = new ConcurrentSkipListSet<String>();
+	private Map<String, Instant> instant = new ConcurrentHashMap<String, Instant>();
+	private String losttime = Const.prop("lost.time");
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
 	static {
@@ -40,14 +44,44 @@ public class Shared {
 		// 定时任务，开始
 		TimerTask task = new TimerTask() {
 			public void run() {
-				for (String key : db.actived.keySet()) {
-					logger.trace("计算" + key + "是否离线");
+				StringBuilder sb = new StringBuilder();
+				sb.append("\r\n开始 检测终端在线状态");
+				int max = Integer.parseInt(db.losttime);
+				long time = getSystemTime().getTime();
+				try {
+					Set<String> actived = db.actived.keySet();
+					Set<String> alive = new HashSet<String>();
+					// 检测上一次连接中失联的终端
+					for (String term : actived) {
+						if (time - db.actived.get(term).getTime() > max) {
+							sb.append("\r\n终端：").append(term).append("失去链接");
+							db.actived.remove(term);
+
+							// 更新即时信息
+							db.instant.put(term, Instant.Offline);
+						} else {
+							alive.add(term);
+						}
+					}
+					// 输入一直失去链接的终端
+					for (String term : db.clients) {
+						if (false == alive.contains(term)) {
+							sb.append("\r\n终端：").append(term).append("失去链接");
+						}
+					}
+					// 输出在线的终端
+					for (String term : alive) {
+						sb.append("\r\n终端：" + term + "链接正常");
+					}
+				} catch (Exception e) {
+					logger.warn("检测在线状态异常", e);
 				}
+				sb.append("\r\n结束 检测终端在线状态");
+				logger.debug(sb);
 			}
 		};
-		String losttime = Const.prop("lost.time");
-		if (null != losttime) {
-			int time = Integer.parseInt(losttime);
+		if (null != db.losttime) {
+			int time = Integer.parseInt(db.losttime);
 			new Timer().schedule(task, time, time);
 		}
 		// 定时任务，结束
