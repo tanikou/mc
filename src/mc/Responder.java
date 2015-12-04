@@ -15,15 +15,6 @@ public interface Responder {
 	/**
 	 * 输出应答报文
 	 * 
-	 * @param res
-	 *            {@link Response}
-	 * @throws IOException
-	 */
-	public void send(Response res) throws IOException;
-
-	/**
-	 * 输出应答报文
-	 * 
 	 * @param packet
 	 * @throws IOException
 	 */

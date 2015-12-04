@@ -51,11 +51,6 @@ public abstract class Handler extends Runner implements Responder {
 	}
 
 	@Override
-	public void send(Response res) throws IOException {
-		send(res.packet());
-	}
-
-	@Override
 	public void send(Packet res) throws IOException {
 		send(res.source());
 	}

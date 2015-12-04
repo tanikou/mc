@@ -60,6 +60,4 @@ public abstract class Response implements Serializable, Viewable {
 
 		return sb.toString();
 	}
-
-	public abstract Packet packet();
 }
