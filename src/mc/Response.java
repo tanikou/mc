@@ -21,6 +21,10 @@ public abstract class Response implements Serializable, Viewable {
 		this.source = origin.clone();
 	}
 
+	public byte[] source() {
+		return source;
+	};
+
 	@Override
 	public String preview() {
 		// return Data.hex(source);
