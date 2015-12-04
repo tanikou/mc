@@ -135,6 +135,19 @@ public class App implements Runnable {
 	}
 
 	/**
+	 * 取消下发指令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @param o
+	 *            需要取消的下发命令
+	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
+	 */
+	public static boolean unbroadcast(String physical, byte o) {
+		return Shared.unbroadcast(physical, o);
+	}
+
+	/**
 	 * 取得队列中最前面的下发命令
 	 * 
 	 * @param physical

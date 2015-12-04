@@ -100,6 +100,27 @@ public class Shared {
 	}
 
 	/**
+	 * 取消下发指令
+	 * 
+	 * @param physical
+	 *            终端编号
+	 * @param o
+	 *            需要取消的下发命令
+	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
+	 */
+	public static boolean unbroadcast(String physical, byte o) {
+		Queue<Notice> queue = db.notice.get(physical);
+		Notice notice = queue.peek();
+		if (null == notice) {
+			return false;
+		} else if (notice.equal(o)) {
+			queue.poll();
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * 取得队列中最前面的下发命令
 	 * 
 	 * @param physical
