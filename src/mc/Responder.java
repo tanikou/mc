@@ -1,6 +1,7 @@
 package mc;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import mc.util.Adder;
 
@@ -43,4 +44,14 @@ public interface Responder {
 	 * @throws IOException
 	 */
 	public void send(byte res) throws IOException;
+
+	/**
+	 * 输出一个可序列化的对象，并且不记录到Trace中
+	 * 
+	 * @param data
+	 *            {@link Serializable}
+	 * @throws IOException
+	 */
+	public void doSendAnObjectAndDoNotTrace(Serializable data)
+			throws IOException;
 }

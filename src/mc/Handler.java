@@ -5,6 +5,8 @@ import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 
 import mc.entity.Trace;
@@ -68,6 +70,15 @@ public abstract class Handler extends Runner implements Responder {
 	@Override
 	public void send(byte[] res) throws IOException {
 		this.out.write(this.trace.res = res);
+	}
+
+	@Override
+	public void doSendAnObjectAndDoNotTrace(Serializable data)
+			throws IOException {
+		ObjectOutputStream oout = new ObjectOutputStream(this.out);
+		// 返回应答
+		oout.writeObject(data);
+		oout.flush();
 	}
 
 	/**
