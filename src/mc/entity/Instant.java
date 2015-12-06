@@ -28,7 +28,12 @@ public enum Instant {
 	/**
 	 * 离线
 	 */
-	Offline("离线"), ;
+	Offline("离线"),
+
+	/**
+	 * 下班中
+	 */
+	OffDuty("下班中");
 
 	private String code;
 

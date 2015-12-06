@@ -34,6 +34,7 @@ public class Shared {
 	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
 	/** 所有的终端列表 */
 	private Set<String> clients = new ConcurrentSkipListSet<String>();
+	/** 临时信息列表 */
 	private Map<String, Instant> instant = new ConcurrentHashMap<String, Instant>();
 	private String losttime = Const.prop("lost.time");
 
