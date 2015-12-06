@@ -298,4 +298,14 @@ public class Data {
 
 		return true;
 	}
+
+	/**
+	 * 判断字符串是否为空
+	 * 
+	 * @param v
+	 * @return
+	 */
+	public static boolean isBlank(String v) {
+		return null == v || "".equals(v);
+	}
 }
