@@ -28,8 +28,8 @@ public class Shared {
 
 	/** 整个环境只允许有一个DB，所有的缓存数据访问可db来处理 */
 	private static Shared db;
-	/** 此次班别中所有连接过的终端机编号 如果不使用{@link ConcurrentHashMap}在定时多线程定时任务中会出错 */
-	private Map<String, Date> actived = new ConcurrentHashMap<String, Date>();
+	/** 在线的终端列表 如果不使用{@link ConcurrentHashMap}在定时多线程定时任务中会出错 */
+	private Map<String, Date> activated = new ConcurrentHashMap<String, Date>();
 	/** 下发命令队列 */
 	private Map<String, Queue<Notice>> notice = new ConcurrentHashMap<String, Queue<Notice>>();
 	/** 所有的终端列表 */
@@ -49,13 +49,13 @@ public class Shared {
 				int max = Integer.parseInt(db.losttime);
 				long time = getSystemTime().getTime();
 				try {
-					Set<String> actived = db.actived.keySet();
+					Set<String> actived = db.activated.keySet();
 					Set<String> alive = new HashSet<String>();
 					// 检测上一次连接中失联的终端
 					for (String term : actived) {
-						if (time - db.actived.get(term).getTime() > max) {
+						if (time - db.activated.get(term).getTime() > max) {
 							sb.append("\r\n终端：").append(term).append("失去链接");
-							db.actived.remove(term);
+							db.activated.remove(term);
 
 							// 更新即时信息
 							db.instant.put(term, Instant.Offline);
@@ -224,12 +224,28 @@ public class Shared {
 	}
 
 	/**
+	 * 取得所有即时状态
+	 */
+	public static Map<String, Instant> instant() {
+		return db.instant;
+	}
+
+	/**
+	 * 取得当前在线终端列表
+	 * 
+	 * @return
+	 */
+	public static Map<String, Date> activated() {
+		return db.activated;
+	}
+
+	/**
 	 * 刷新终端的最新链接时间
 	 * 
 	 * @param client
 	 *            终端编号
 	 */
 	public static void heartbeat(String client) {
-		db.actived.put(client, getSystemTime());
+		db.activated.put(client, getSystemTime());
 	}
 }
