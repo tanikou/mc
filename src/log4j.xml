@@ -6,6 +6,7 @@
 			<param name="ConversionPattern" value="[%d{yyyyMMdd HHmmss.SSS\} %-5p] [%t] %c{2\} - %m%n" />
 		</layout>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<!-- 生产环境，console等级调为debug为好 -->
 			<param name="LevelMin" value="all" />
 		</filter>
 	</appender>
