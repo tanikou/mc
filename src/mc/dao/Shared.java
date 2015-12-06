@@ -110,6 +110,24 @@ public class Shared {
 	 * @param o
 	 *            命令字。
 	 */
+	public static boolean broadcast(String client, byte o) {
+		Queue<Notice> queue = db.notice.get(client);
+		if (null == queue) {
+			queue = new ConcurrentLinkedQueue<Notice>();
+			db.notice.put(client, queue);
+		}
+		queue.add(new Notice(o));
+		return true;
+	}
+
+	/**
+	 * 取对指定终端机的下发命令
+	 * 
+	 * @param client
+	 *            终端编号
+	 * @param o
+	 *            命令字。
+	 */
 	public static boolean broadcast(String client, Notice o) {
 		Queue<Notice> queue = db.notice.get(client);
 		if (null == queue) {

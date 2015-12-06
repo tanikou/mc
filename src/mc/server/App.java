@@ -112,39 +112,51 @@ public class App implements Runnable {
 	/**
 	 * 取对指定终端机的下发命令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            命令字。
 	 */
-	public static boolean broadcast(String physical, Notice o) {
-		return Shared.broadcast(physical, o);
+	public static boolean broadcast(String client, byte o) {
+		return Shared.broadcast(client, o);
+	}
+
+	/**
+	 * 取对指定终端机的下发命令
+	 * 
+	 * @param client
+	 *            终端编号
+	 * @param o
+	 *            命令字。
+	 */
+	public static boolean broadcast(String client, Notice o) {
+		return Shared.broadcast(client, o);
 	}
 
 	/**
 	 * 取消下发指令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            需要取消的下发命令
 	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
 	 */
-	public static boolean unbroadcast(String physical, Notice o) {
-		return Shared.unbroadcast(physical, o);
+	public static boolean unbroadcast(String client, Notice o) {
+		return Shared.unbroadcast(client, o);
 	}
 
 	/**
 	 * 取消下发指令
 	 * 
-	 * @param physical
+	 * @param client
 	 *            终端编号
 	 * @param o
 	 *            需要取消的下发命令
 	 * @return 如果第一个下发指令是参数所指定的下发命令则<strong>移除</strong>并返回true，否则false
 	 */
-	public static boolean unbroadcast(String physical, byte o) {
-		return Shared.unbroadcast(physical, o);
+	public static boolean unbroadcast(String client, byte o) {
+		return Shared.unbroadcast(client, o);
 	}
 
 	/**
@@ -154,7 +166,7 @@ public class App implements Runnable {
 	 *            终端编号
 	 * @return 下发命令，如果没有下发命令则为<strong>null</strong>
 	 */
-	public static Notice notification(String physical) {
-		return Shared.notification(physical);
+	public static Notice notification(String client) {
+		return Shared.notification(client);
 	}
 }
