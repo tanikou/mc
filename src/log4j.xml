@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- 控制台临时输入日志，不记录到任何位置 -->
 	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d{yyyyMMdd HHmmss.SSS\} %-5p] [%t] %c{2\} - %m%n" />
@@ -11,6 +12,7 @@
 		</filter>
 	</appender>
 	
+	<!-- 调试用日志记录，每天一个压缩日志 -->
 	<appender name="everything" class="org.apache.log4j.rolling.RollingFileAppender">
 		<param name="Encoding" value="UTF-8" />
 		<rollingPolicy name="file" class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
@@ -24,19 +26,21 @@
 			<param name="LevelMin" value="debug" />
 		</filter>
 	</appender>
-    <appender name="important" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="log/system.important.log" />
-        <param name="Encoding" value="UTF-8" />
-        <param name="Append" value="true" />
-        <param name="MaxFileSize" value="1024MB" />
-        <param name="MaxBackupIndex" value="20" />
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n" />
-        </layout>
-        <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="LevelMin" value="info" />
-        </filter>
-    </appender>
+
+	<!-- 生产环境重要日志记录，最多20个备份，每个最大1G -->
+	<appender name="important" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/system.important.log" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="1024MB" />
+		<param name="MaxBackupIndex" value="20" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+		    <param name="LevelMin" value="info" />
+		</filter>
+	</appender>
 
 	<logger name="mc">
 		<level value="ALL" />
