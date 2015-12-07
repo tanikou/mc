@@ -28,13 +28,16 @@ public class Receipt implements Viewable {
 		return append(v.preview());
 	}
 
+	public Receipt append(Trace v) {
+		return append(v.preview());
+	}
+
 	public String identify() {
 		return key;
 	}
 
-	public Receipt identify(String key) {
-		this.key = key;
-		return this;
+	public String identify(String key) {
+		return this.key = key;
 	}
 
 	@Override
