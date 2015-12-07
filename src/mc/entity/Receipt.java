@@ -24,11 +24,7 @@ public class Receipt implements Viewable {
 		return append(v).append(e.getMessage());
 	}
 
-	public Receipt append(Receipt v) {
-		return append(v.preview());
-	}
-
-	public Receipt append(Trace v) {
+	public Receipt append(Viewable v) {
 		return append(v.preview());
 	}
 
