@@ -72,13 +72,13 @@ public class Shared {
 					}
 					// 输出在线的终端
 					for (String term : alive) {
-						sb.append("\r\n终端：" + term + "链接正常");
+						sb.append("\r\n终端：").append(term).append("链接正常");
 					}
 				} catch (Exception e) {
 					logger.warn("检测在线状态异常", e);
 				}
 				sb.append("\r\n结束 检测终端在线状态");
-				logger.debug(sb);
+				logger.trace(sb);
 			}
 		};
 		if (null != db.losttime) {
