@@ -44,10 +44,7 @@ public abstract class Handler extends Runner implements Responder {
 			this.out = new DataOutputStream(new BufferedOutputStream(
 					this.socket.getOutputStream()));
 		} catch (IOException e) {
-			try {
-				this.close();
-			} catch (IOException ex) {
-			}
+			this.close();
 		}
 		return this;
 	}
@@ -86,10 +83,19 @@ public abstract class Handler extends Runner implements Responder {
 	 * 
 	 * @throws IOException
 	 */
-	protected void close() throws IOException {
-		this.out.close();
-		this.in.close();
-		this.socket.close();
+	protected void close() {
+		try {
+			this.out.close();
+		} catch (Exception e) {
+		}
+		try {
+			this.in.close();
+		} catch (Exception e) {
+		}
+		try {
+			this.socket.close();
+		} catch (Exception e) {
+		}
 	}
 
 	/**

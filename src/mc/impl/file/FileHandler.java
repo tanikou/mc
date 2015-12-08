@@ -1,7 +1,5 @@
 package mc.impl.file;
 
-import java.io.IOException;
-
 import mc.Handler;
 import mc.Packet;
 import mc.dao.Shared;
@@ -25,10 +23,7 @@ public class FileHandler extends Handler {
 			receipt.append("处理报文出错，报文内容--" + Data.hex(trace.req));
 			receipt.append("处理报文出错，错误信息：", e);
 		} finally {
-			try {
-				this.close();
-			} catch (IOException e) {
-			}
+			this.close();
 		}
 		receipt.append(trace.preview());
 
