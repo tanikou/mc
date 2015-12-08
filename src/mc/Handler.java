@@ -43,7 +43,7 @@ public abstract class Handler extends Runner implements Responder {
 					this.socket.getInputStream()));
 			this.out = new DataOutputStream(new BufferedOutputStream(
 					this.socket.getOutputStream()));
-		} catch (Exception e) {
+		} catch (IOException e) {
 			try {
 				this.close();
 			} catch (IOException ex) {
