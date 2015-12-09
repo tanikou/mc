@@ -67,6 +67,7 @@ public abstract class Handler extends Runner implements Responder {
 	@Override
 	public void send(byte[] res) throws IOException {
 		this.out.write(this.trace.res = res);
+		this.out.flush();
 	}
 
 	@Override
