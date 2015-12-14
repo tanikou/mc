@@ -59,10 +59,10 @@ public class Data {
 	 * @return
 	 */
 	public static String hex(byte[] ary) {
-		return null == ary ? null : hex(ary, ' ');
+		return null == ary ? null : hex(ary, "");
 	}
 
-	public static String hex(byte[] ary, char ch) {
+	public static String hex(byte[] ary, String ch) {
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < ary.length; i++) {
 			sb.append(ch);
