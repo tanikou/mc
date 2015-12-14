@@ -24,6 +24,17 @@ public class Adder {
 	}
 
 	/**
+	 * 添加到头部
+	 * 
+	 * @param data
+	 * @return
+	 */
+	public Adder preadd(byte[] data) {
+		list.add(0, data);
+		return this;
+	}
+
+	/**
 	 * 添加到结尾
 	 * 
 	 * @param data
