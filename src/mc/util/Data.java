@@ -59,7 +59,7 @@ public class Data {
 	 * @return
 	 */
 	public static String hex(byte[] ary) {
-		return null == ary ? null : hex(ary, "");
+		return null == ary ? null : hex(ary, " ");
 	}
 
 	public static String hex(byte[] ary, String ch) {
