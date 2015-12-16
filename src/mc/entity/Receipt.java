@@ -25,7 +25,7 @@ public class Receipt implements Viewable {
 	}
 
 	public Receipt append(Viewable v) {
-		return append(v.preview());
+		return append(v.stringify());
 	}
 
 	public String identify() {
@@ -37,7 +37,7 @@ public class Receipt implements Viewable {
 	}
 
 	@Override
-	public String preview() {
+	public String stringify() {
 		return sb.toString();
 	}
 }

@@ -26,7 +26,7 @@ public abstract class Response implements Serializable, Viewable {
 	};
 
 	@Override
-	public String preview() {
+	public String stringify() {
 		// return Data.hex(source);
 		StringBuilder sb = new StringBuilder();
 		sb.append("以下数据通过注释自动取得\r\n");

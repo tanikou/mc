@@ -33,7 +33,7 @@ public abstract class Packet implements Viewable {
 	}
 
 	@Override
-	public String preview() {
+	public String stringify() {
 		return Data.hex(this.source);
 	}
 

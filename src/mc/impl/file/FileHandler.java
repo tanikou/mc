@@ -25,9 +25,9 @@ public class FileHandler extends Handler {
 		} finally {
 			this.close();
 		}
-		receipt.append(trace.preview());
+		receipt.append(trace.stringify());
 
-		logger.debug("处理报文结束，处理过程信息：" + receipt.preview());
+		logger.debug("处理报文结束，处理过程信息：" + receipt.stringify());
 	}
 
 	private Trace read() throws Exception {

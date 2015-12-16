@@ -24,7 +24,7 @@ public class Trace implements Viewable {
 	public Date time = new Date();
 
 	@Override
-	public String preview() {
+	public String stringify() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("请求时间：");
 		sb.append(Data.toView(time));

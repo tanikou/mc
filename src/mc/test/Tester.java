@@ -17,6 +17,6 @@ public class Tester {
 		byte[] ary = new byte[] { 0x01, 0x02, 0x03, 0x04 };
 		FileRequest req = new FileRequest(new FilePacket().data(ary));
 		req.autobind();
-		System.out.println(req.preview());
+		System.out.println(req.stringify());
 	}
 }

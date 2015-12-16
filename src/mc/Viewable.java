@@ -7,5 +7,5 @@ package mc;
  */
 public interface Viewable {
 
-	public String preview();
+	public String stringify();
 }
