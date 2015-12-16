@@ -3,17 +3,23 @@ package mc.util;
 import java.util.LinkedList;
 import java.util.List;
 
+import mc.Viewable;
+
 /**
  * 按顺序数据截取
  * 
  * @author VicTan@qq.com
  *
  */
-public class Cutter {
+public class Cutter implements Viewable {
 	private List<Byte> source = new LinkedList<Byte>();
 
 	public Cutter(byte[] data) {
 		this(data, 0, data.length);
+	}
+
+	public Cutter(byte[] data, int start) {
+		this(data, start, data.length - start);
 	}
 
 	public Cutter(byte[] data, int start, int end) {
@@ -35,5 +41,10 @@ public class Cutter {
 			ary[i] = source.remove(0);
 		}
 		return ary;
+	}
+
+	@Override
+	public String stringify() {
+		return source.toArray().toString();
 	}
 }
