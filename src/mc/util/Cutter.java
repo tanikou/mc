@@ -10,11 +10,15 @@ import java.util.List;
  *
  */
 public class Cutter {
-	List<Byte> source = new LinkedList<Byte>();
+	private List<Byte> source = new LinkedList<Byte>();
 
 	public Cutter(byte[] data) {
-		for (byte b : data) {
-			source.add(b);
+		this(data, 0, data.length);
+	}
+
+	public Cutter(byte[] data, int start, int end) {
+		for (int i = start; i < end; i++) {
+			source.add(data[i]);
 		}
 	}
 
