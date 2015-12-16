@@ -45,6 +45,10 @@ public class Cutter implements Viewable {
 
 	@Override
 	public String stringify() {
-		return source.toArray().toString();
+		byte[] ary = new byte[source.size()];
+		for (int i = 0; i < ary.length; i++) {
+			ary[i] = source.get(i);
+		}
+		return Data.hex(ary);
 	}
 }
