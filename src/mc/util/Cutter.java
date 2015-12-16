@@ -15,11 +15,11 @@ public class Cutter implements Viewable {
 	private List<Byte> source = new LinkedList<Byte>();
 
 	public Cutter(byte[] data) {
-		this(data, 0, data.length);
+		this(data, 0);
 	}
 
 	public Cutter(byte[] data, int start) {
-		this(data, start, data.length - start);
+		this(data, start, data.length);
 	}
 
 	public Cutter(byte[] data, int start, int end) {
