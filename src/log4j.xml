@@ -45,20 +45,20 @@
 	<logger name="mc">
 		<level value="ALL" />
 		<appender-ref ref="stdout" />
-		<appender-ref ref="everything" />
-		<appender-ref ref="important" />
+		<!--appender-ref ref="everything" /-->
+		<!--appender-ref ref="important" /-->
 	</logger>
 	
 	<logger name="org.springframework">
 		<level value="error" />
 		<appender-ref ref="stdout" />
-		<appender-ref ref="important" />
+		<!--appender-ref ref="important" /-->
 	</logger>
 	
 	<logger name="org.apache">
 		<level value="error" />
 		<appender-ref ref="stdout" />
-		<appender-ref ref="important" />
+		<!--appender-ref ref="important" /-->
 	</logger>
 
 </log4j:configuration>
