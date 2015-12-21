@@ -171,6 +171,9 @@ public class Shared {
 	 */
 	public static boolean unbroadcast(String client, byte o) {
 		Queue<Notice> queue = db.notice.get(client);
+		if (null == queue || 0 == queue.size()) {
+			return false;
+		}
 		Notice notice = queue.peek();
 		if (null == notice) {
 			return false;
@@ -209,6 +212,9 @@ public class Shared {
 	 * @return
 	 */
 	public static boolean register(String client) {
+		db.notice.put(client, new ConcurrentLinkedQueue<Notice>());
+		db.instant.put(client, Instant.Offline);
+
 		return db.clients.add(client);
 	}
 
