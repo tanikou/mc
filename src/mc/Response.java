@@ -17,9 +17,9 @@ public abstract class Response implements Serializable, Viewable {
 	private static final long serialVersionUID = 1L;
 	protected byte[] source;
 	/** 处理成功标识 */
-	public byte OK = 0X00;
+	public static final byte OK = 0X00;
 	/** 处理失败标识 */
-	public byte NG = 0x01;
+	public static final byte NG = 0x01;
 
 	public Response(byte[] origin) {
 		this.source = origin.clone();
