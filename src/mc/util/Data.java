@@ -3,6 +3,7 @@ package mc.util;
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 数据转换工具
@@ -115,6 +116,14 @@ public class Data {
 		byte[] ary = new byte[len];
 		for (int j = 0; j < len; j++) {
 			ary[len - j - 1] = (byte) (i >> (j * 8));
+		}
+		return ary;
+	}
+
+	public static byte[] bytes(List<Byte> list) {
+		byte[] ary = new byte[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			ary[i] = list.get(i);
 		}
 		return ary;
 	}
