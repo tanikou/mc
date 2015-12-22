@@ -202,7 +202,8 @@ public class Shared {
 			return null;
 		}
 		Notice notice = queue.peek();
-		if (notice.isRead()) {
+		if (null == notice) {
+		} else if (notice.isRead()) {
 			queue.poll();// 删除已经下发完成的命令
 			return queue.peek();// 重新取下一条下发命令
 		}
