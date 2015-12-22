@@ -150,6 +150,9 @@ public class Shared {
 	 */
 	public static boolean unbroadcast(String client, Notice o) {
 		Queue<Notice> queue = db.notice.get(client);
+		if (null == queue || 0 == queue.size()) {
+			return false;
+		}
 		Notice notice = queue.peek();
 		if (null == notice) {
 			return false;
