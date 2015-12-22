@@ -47,7 +47,7 @@ public class Shared {
 			public void run() {
 				StringBuilder sb = new StringBuilder();
 				sb.append("\r\n开始 检测终端在线状态");
-				int max = Integer.parseInt(db.losttime);
+				int max = Integer.parseInt(db.losttime) * 1000;
 				long time = getSystemTime().getTime();
 				try {
 					Set<String> actived = db.activated.keySet();
@@ -81,9 +81,11 @@ public class Shared {
 				logger.trace(sb);
 			}
 		};
-		if (null != db.losttime) {
-			int time = Integer.parseInt(db.losttime);
+		if (null != db.losttime && db.losttime.matches("[0-9]+")) {
+			int time = Integer.parseInt(db.losttime) * 1000;
 			new Timer().schedule(task, time, time);
+		} else {
+			logger.debug("超时时间配置不正确，跳过定时任务设定");
 		}
 		// 定时任务，结束
 	}
