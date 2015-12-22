@@ -27,7 +27,7 @@ public abstract class Response implements Serializable, Viewable {
 
 	public byte[] source() {
 		return source;
-	};
+	}
 
 	@Override
 	public String stringify() {
