@@ -13,9 +13,9 @@ public class Receipt implements Viewable {
 	private StringBuilder sb = new StringBuilder();
 
 	public Receipt append(String v) {
-		sb.append("\r\n");
 		sb.append(v);
-
+		sb.append("\r\n");
+		
 		return this;
 	}
 
