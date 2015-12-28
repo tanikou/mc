@@ -15,13 +15,18 @@ public class Receipt implements Viewable {
 	public Receipt append(String v) {
 		sb.append(v);
 		sb.append("\r\n");
-		
+
 		return this;
 	}
 
 	public Receipt append(String v, Throwable e) {
 
 		return append(v).append(e.getMessage());
+	}
+
+	public Receipt append(Receipt v) {
+		sb.append(v.stringify());
+		return this;
 	}
 
 	public Receipt append(Viewable v) {
