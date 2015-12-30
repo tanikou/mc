@@ -1,7 +1,5 @@
 package mc.core;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -39,10 +37,8 @@ public abstract class Handler extends Runner implements Responder {
 			this.socket = socket;
 			this.trace.port = socket.getLocalPort();
 			this.trace.client = socket.getInetAddress().getHostAddress();
-			this.in = new DataInputStream(new BufferedInputStream(
-					this.socket.getInputStream()));
-			this.out = new DataOutputStream(new BufferedOutputStream(
-					this.socket.getOutputStream()));
+			this.in = new DataInputStream(this.socket.getInputStream());
+			this.out = new DataOutputStream(this.socket.getOutputStream());
 		} catch (IOException e) {
 			this.close();
 		}
