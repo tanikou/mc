@@ -36,7 +36,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import mc.client.AsClient;
+import mc.util.AsClient;
 import mc.util.Data;
 
 /**

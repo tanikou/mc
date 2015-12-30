@@ -1,12 +1,10 @@
-package mc.server;
+package mc;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import mc.Handler;
-import mc.Runner;
 import mc.dao.Shared;
 import mc.entity.Notice;
 import mc.util.Data;
@@ -19,8 +17,8 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @author VicTan@qq.com
  */
-public class App implements Runnable {
-	private static Log logger = LogFactory.getLog(App.class);
+public class Server implements Runnable {
+	private static Log logger = LogFactory.getLog(Server.class);
 
 	/** 用于 多端口服务 中停止本端口服务 */
 	private boolean isSingleRunning = true;
@@ -36,7 +34,7 @@ public class App implements Runnable {
 	 * @param runner
 	 *            用来读取，转换，处理报文的类。{@link Runner} 或者 {@link Handler}的子类
 	 */
-	public App(Class<? extends Runner> runner) {
+	public Server(Class<? extends Runner> runner) {
 		this.iRunner = runner;
 	}
 
@@ -47,7 +45,7 @@ public class App implements Runnable {
 	 * @param port
 	 *            监听端口
 	 */
-	public App(Class<? extends Runner> runner, int port) {
+	public Server(Class<? extends Runner> runner, int port) {
 		this.iRunner = runner;
 		this.iPort = port;
 	}
@@ -68,7 +66,7 @@ public class App implements Runnable {
 	 * @param max
 	 * @return
 	 */
-	public App setMaxThread(int max) {
+	public Server setMaxThread(int max) {
 		this.iMaxThread = max;
 		return this;
 	}

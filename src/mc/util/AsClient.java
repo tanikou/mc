@@ -1,4 +1,4 @@
-package mc.client;
+package mc.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -2,7 +2,7 @@ package mc.impl.debug;
 
 import java.io.File;
 
-import mc.server.App;
+import mc.Server;
 import mc.util.Const;
 
 /**
@@ -24,6 +24,6 @@ public class DebugApp {
 
 	public static void main(String[] args) {
 		int port = Integer.parseInt(Const.prop("debug.port"));
-		new Thread(new App(DebugHandler.class, port)).start();
+		new Thread(new Server(DebugHandler.class, port)).start();
 	}
 }
