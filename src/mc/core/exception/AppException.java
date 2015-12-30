@@ -1,4 +1,4 @@
-package mc.exception;
+package mc.core.exception;
 
 /**
  * 程序处理异常

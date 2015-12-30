@@ -1,4 +1,4 @@
-package mc;
+package mc.core;
 
 /**
  * 

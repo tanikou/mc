@@ -1,6 +1,6 @@
 package mc.test;
 
-import mc.util.AsClient;
+import mc.core.util.AsClient;
 
 public class Tester {
 	public static void main(String[] args) throws Exception {

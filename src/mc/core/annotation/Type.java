@@ -1,4 +1,4 @@
-package mc.annotation;
+package mc.core.annotation;
 
 /**
  * 自动解析报文时，报文各字段类型

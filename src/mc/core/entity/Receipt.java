@@ -1,6 +1,6 @@
-package mc.entity;
+package mc.core.entity;
 
-import mc.Viewable;
+import mc.core.Viewable;
 
 /**
  * 处理过程中的回执信息

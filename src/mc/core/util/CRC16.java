@@ -1,4 +1,4 @@
-package mc.util;
+package mc.core.util;
 
 public class CRC16 {
 	public static int create(byte[] bytes) {

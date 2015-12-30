@@ -1,4 +1,4 @@
-package mc.util;
+package mc.core.util;
 
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;

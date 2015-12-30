@@ -1,13 +1,13 @@
-package mc;
+package mc.core;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import mc.dao.Shared;
-import mc.entity.Notice;
-import mc.util.Data;
+import mc.core.dao.Shared;
+import mc.core.entity.Notice;
+import mc.core.util.Data;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

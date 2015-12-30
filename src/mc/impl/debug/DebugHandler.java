@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import mc.Handler;
-import mc.Response;
-import mc.dao.Shared;
-import mc.exception.AppException;
-import mc.util.Data;
+import mc.core.Handler;
+import mc.core.Response;
+import mc.core.dao.Shared;
+import mc.core.exception.AppException;
+import mc.core.util.Data;
 
 /**
  * 接受并分终端记录调试报文

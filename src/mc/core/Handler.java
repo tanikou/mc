@@ -1,4 +1,4 @@
-package mc;
+package mc.core;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -9,8 +9,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 
-import mc.entity.Trace;
-import mc.util.Adder;
+import mc.core.entity.Trace;
+import mc.core.util.Adder;
 
 /**
  * 报文处理基类（子类应该run方法中实现对报文的读取，处理，应答）。<br>

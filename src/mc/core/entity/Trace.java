@@ -1,9 +1,9 @@
-package mc.entity;
+package mc.core.entity;
 
 import java.util.Date;
 
-import mc.Viewable;
-import mc.util.Data;
+import mc.core.Viewable;
+import mc.core.util.Data;
 
 /**
  * 请求，应答记录

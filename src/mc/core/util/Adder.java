@@ -1,4 +1,4 @@
-package mc.util;
+package mc.core.util;
 
 import java.util.LinkedList;
 import java.util.List;

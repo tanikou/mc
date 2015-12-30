@@ -1,10 +1,10 @@
-package mc;
+package mc.core;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import mc.annotation.Preview;
+import mc.core.annotation.Preview;
 import mc.test.Tester;
 
 /**

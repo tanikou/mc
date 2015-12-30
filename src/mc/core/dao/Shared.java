@@ -1,4 +1,4 @@
-package mc.dao;
+package mc.core.dao;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,9 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-import mc.entity.Instant;
-import mc.entity.Notice;
-import mc.util.Const;
+import mc.core.entity.Instant;
+import mc.core.entity.Notice;
+import mc.core.util.Const;
 
 import org.apache.log4j.Logger;
 

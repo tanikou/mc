@@ -1,4 +1,4 @@
-package mc.entity;
+package mc.core.entity;
 
 /**
  * 即时信息的状态值

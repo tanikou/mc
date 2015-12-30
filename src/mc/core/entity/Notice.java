@@ -1,8 +1,8 @@
-package mc.entity;
+package mc.core.entity;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import mc.util.Data;
+import mc.core.util.Data;
 
 /**
  * 下发命令通知，默认读取三次则示客户端已经取得当前通知<br>

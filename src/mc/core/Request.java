@@ -1,14 +1,14 @@
-package mc;
+package mc.core;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-import mc.annotation.Bind;
-import mc.annotation.Preview;
-import mc.annotation.Type;
-import mc.util.Data;
+import mc.core.annotation.Bind;
+import mc.core.annotation.Preview;
+import mc.core.annotation.Type;
+import mc.core.util.Data;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

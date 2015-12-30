@@ -1,9 +1,9 @@
-package mc;
+package mc.core;
 
 import java.io.IOException;
 import java.io.Serializable;
 
-import mc.util.Adder;
+import mc.core.util.Adder;
 
 /**
  * 报文应答接口

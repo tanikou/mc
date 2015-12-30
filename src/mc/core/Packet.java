@@ -1,6 +1,6 @@
-package mc;
+package mc.core;
 
-import mc.util.Data;
+import mc.core.util.Data;
 
 /**
  * 报文基类（不同报文的加密解密需要在实现中自己处理）<br>

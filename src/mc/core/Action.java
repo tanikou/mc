@@ -1,5 +1,4 @@
-package mc;
-
+package mc.core;
 
 /**
  * 业务处理基类（处理并返回应该在子类中实现）

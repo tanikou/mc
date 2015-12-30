@@ -2,8 +2,8 @@ package mc.impl.debug;
 
 import java.io.File;
 
-import mc.Server;
-import mc.util.Const;
+import mc.core.Server;
+import mc.core.util.Const;
 
 /**
  * 处理终端发送的调试信息
