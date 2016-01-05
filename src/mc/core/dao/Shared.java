@@ -276,7 +276,7 @@ public class Shared {
 	 * @param event
 	 *            事件处理
 	 */
-	public static void bind(String name, Event event) {
+	public static void on(String name, Event event) {
 		List<Event> list = db.event.get(name);
 		if (null == list) {
 			db.event.put(name, list = new ArrayList<Event>());
