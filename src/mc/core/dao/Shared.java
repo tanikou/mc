@@ -290,14 +290,14 @@ public class Shared {
 	 * @param name
 	 *            事件名称
 	 */
-	public static void emit(String name) {
+	public static void emit(String name, Object o) {
 		List<Event> list = db.event.get(name);
 		if (null == list) {
 			return;
 		}
 		for (Event event : list) {
 			try {
-				event.todo();
+				event.todo(o);
 			} catch (Throwable e) {
 			}
 		}
