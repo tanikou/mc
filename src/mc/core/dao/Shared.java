@@ -1,7 +1,9 @@
 package mc.core.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -11,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+import mc.core.Event;
 import mc.core.entity.Instant;
 import mc.core.entity.Notice;
 import mc.core.util.Const;
@@ -36,6 +39,9 @@ public class Shared {
 	private Set<String> clients = new ConcurrentSkipListSet<String>();
 	/** 临时信息列表 */
 	private Map<String, Instant> instant = new ConcurrentHashMap<String, Instant>();
+	/** 全局通知事件 */
+	private Map<String, List<Event>> event = new ConcurrentHashMap<String, List<Event>>();
+	/** 失去链接时间 */
 	private String losttime = Const.prop("lost.time");
 
 	// 及时初始化，可以直接使用而不需要像单例一样先get再使用
@@ -260,5 +266,40 @@ public class Shared {
 	 */
 	public static void heartbeat(String client) {
 		db.activated.put(client, getSystemTime());
+	}
+
+	/**
+	 * 添加emit触发事件
+	 * 
+	 * @param name
+	 *            事件名称
+	 * @param event
+	 *            事件处理
+	 */
+	public static void bind(String name, Event event) {
+		List<Event> list = db.event.get(name);
+		if (null == list) {
+			db.event.put(name, list = new ArrayList<Event>());
+		}
+		list.add(event);
+	}
+
+	/**
+	 * 触发事件
+	 * 
+	 * @param name
+	 *            事件名称
+	 */
+	public static void emit(String name) {
+		List<Event> list = db.event.get(name);
+		if (null == list) {
+			return;
+		}
+		for (Event event : list) {
+			try {
+				event.todo();
+			} catch (Throwable e) {
+			}
+		}
 	}
 }
