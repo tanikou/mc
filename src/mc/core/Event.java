@@ -9,6 +9,5 @@ import java.util.EventListener;
  *
  */
 public abstract class Event implements EventListener {
-	public void todo(Object o) {
-	};
+	public abstract void todo(Object o);
 }
