@@ -1,6 +1,8 @@
 package mc.core.util;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -316,5 +318,24 @@ public class Data {
 	 */
 	public static boolean isBlank(String v) {
 		return null == v || "".equals(v);
+	}
+
+	/**
+	 * 读取 {@link InputStream} 中的所有数据
+	 * 
+	 * @param in
+	 *            {@link InputStream}
+	 * @return
+	 * @throws IOException
+	 */
+	public static byte[] readin(InputStream in) throws IOException {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		int len = 0;
+		byte[] buffer = new byte[1024];
+		while ((len = in.read(buffer)) > 0) {
+			out.write(buffer, 0, len);
+		}
+		out.close();
+		return out.toByteArray();
 	}
 }
