@@ -24,7 +24,7 @@ import mc.core.util.Adder;
  * @author VicTan@qq.com
  *
  */
-public abstract class Handler extends Runner implements Responder {
+public abstract class Handler implements Runner, Responder {
 
 	protected Socket socket;
 	protected Trace trace = new Trace();

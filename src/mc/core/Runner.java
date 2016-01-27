@@ -8,7 +8,7 @@ import java.net.Socket;
  * @author VicTan@qq.com
  *
  */
-public abstract class Runner implements Runnable {
+public interface Runner extends Runnable {
 
 	/**
 	 * 设定报文请求Socket，具体处理应该在多线程的run方法中实现
@@ -17,5 +17,5 @@ public abstract class Runner implements Runnable {
 	 *            {@link Socket}报文请求
 	 * @return 处理器自身
 	 */
-	public abstract Runner setup(Socket client);
+	public Runner setup(Socket client);
 }
