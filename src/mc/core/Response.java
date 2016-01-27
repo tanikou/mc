@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import mc.core.annotation.Preview;
-import mc.test.Tester;
 
 /**
  * 报文应答对象基类（子类用于组装正常数据为报文）
@@ -34,7 +33,7 @@ public abstract class Response implements Serializable, Viewable {
 		// return Data.hex(source);
 		StringBuilder sb = new StringBuilder();
 		sb.append("以下数据通过注释自动取得\r\n");
-		for (Field field : Tester.class.getDeclaredFields()) {
+		for (Field field : this.getClass().getDeclaredFields()) {
 			Preview bind = field.getAnnotation(Preview.class);
 			if (null == bind)
 				continue;
@@ -50,7 +49,7 @@ public abstract class Response implements Serializable, Viewable {
 			sb.append(o);
 		}
 
-		for (Method method : Tester.class.getDeclaredMethods()) {
+		for (Method method : this.getClass().getDeclaredMethods()) {
 			Preview bind = method.getAnnotation(Preview.class);
 			if (null == bind)
 				continue;
