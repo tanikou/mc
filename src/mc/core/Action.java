@@ -20,15 +20,4 @@ public abstract class Action {
 	public Action(Responder responder) {
 		this.responder = responder;
 	}
-
-	/**
-	 * 设置程序运行回执单
-	 * 
-	 * @param receipt
-	 * @return
-	 */
-	public Action receipt(Receipt receipt) {
-		this.receipt = receipt;
-		return this;
-	}
 }
