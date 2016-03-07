@@ -1,5 +1,7 @@
 package mc.core;
 
+import mc.core.entity.Receipt;
+
 /**
  * 业务处理基类（处理并返回应该在子类中实现）
  * 
@@ -8,6 +10,7 @@ package mc.core;
  */
 public abstract class Action {
 	protected Responder responder;
+	protected Receipt receipt = new Receipt();
 
 	/**
 	 * 
@@ -16,5 +19,16 @@ public abstract class Action {
 	 */
 	public Action(Responder responder) {
 		this.responder = responder;
+	}
+
+	/**
+	 * 设置程序运行回执单
+	 * 
+	 * @param receipt
+	 * @return
+	 */
+	public Action receipt(Receipt receipt) {
+		this.receipt = receipt;
+		return this;
 	}
 }
