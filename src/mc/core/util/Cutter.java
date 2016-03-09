@@ -29,6 +29,15 @@ public class Cutter implements Viewable {
 	}
 
 	/**
+	 * 截取下一个byte数据
+	 * 
+	 * @return
+	 */
+	public byte next() {
+		return source.remove(0);
+	}
+
+	/**
 	 * 截取下一段数据
 	 * 
 	 * @param len
