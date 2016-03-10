@@ -249,6 +249,11 @@ public class Shared {
 		return db.instant;
 	}
 
+	/** 取得某一终端当前的状态 */
+	public static Instant instant(String client) {
+		return db.instant.get(client);
+	}
+
 	/**
 	 * 取得当前在线终端列表
 	 * 
