@@ -7,33 +7,16 @@ package mc.core.entity;
  *
  */
 public enum Instant {
-	/**
-	 * 正常空闲中
-	 */
+	/** 正常状态 */
 	Normal("正常空闲中"),
-
-	/**
-	 * 插卡中
-	 */
-	Card("插卡中"),
-
-	/**
-	 * 加油中
-	 */
-	Fuel("加油中"),
-	/**
-	 * 锁定中
-	 */
+	/** 繁忙状态 */
+	Busy("繁忙"),
+	/** 锁定中 */
 	Locked("锁定中"),
-	/**
-	 * 离线
-	 */
+	/** 离线 */
 	Offline("离线"),
-
-	/**
-	 * 下班中
-	 */
-	OffDuty("下班中");
+	/** 下班中 */
+	OffDuty("已下班");
 
 	private String code;
 
